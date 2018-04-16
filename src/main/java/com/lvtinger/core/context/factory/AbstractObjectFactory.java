@@ -17,14 +17,14 @@ public abstract class AbstractObjectFactory implements ObjectFactory {
         return null;
     }
 
-    public void put(ObjectConfig config){
-        if(map.containsKey(config.getName())){
+    public void put(ObjectConfig config) {
+        if (map.containsKey(config.getName())) {
             throw new LvtingerException();
         }
         map.put(config.getName(), config);
     }
 
-    private Object instance(ObjectConfig config){
+    private Object instance(ObjectConfig config) {
 
         return null;
     }

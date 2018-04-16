@@ -5,7 +5,8 @@ import java.util.List;
 /**
  * @author qiuxu
  */
-public class ObjectConfig {
+public class ObjectConfig{
+
     private Class<?> clazz;
     private String name;
     private List<ValueConfig> properties;
