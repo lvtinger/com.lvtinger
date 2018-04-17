@@ -1,14 +1,15 @@
-package com.lvtinger.core.context.scan;
+package com.lvtinger.core.context.scanner;
 
-import com.lvtinger.core.context.config.ConfigContainer;
+import com.lvtinger.core.context.config.ConfigManage;
 import com.lvtinger.core.context.config.ObjectConfig;
+import com.lvtinger.core.context.resolver.ConfigResolver;
 
 import java.util.List;
 
 public abstract class AbstractScanner implements ConfigResolver {
-    private final ConfigContainer container;
+    private final ConfigManage container;
 
-    public AbstractScanner(ConfigContainer container) {
+    public AbstractScanner(ConfigManage container) {
         this.container = container;
     }
 

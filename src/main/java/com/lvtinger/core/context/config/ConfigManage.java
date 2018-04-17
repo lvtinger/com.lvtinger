@@ -7,7 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class ConfigContainer {
+/**
+ * @author qiuxu
+ */
+public class ConfigManage {
     private final Map<String, ObjectConfig> map = new HashMap<>();
 
     public ObjectConfig get(String name) {
@@ -16,7 +19,8 @@ public class ConfigContainer {
         }
 
         ObjectConfig config = map.get(name);
-        if (config == null) {
+
+        if(config == null){
             throw new LvtingerException();
         }
 
