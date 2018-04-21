@@ -1,8 +1,19 @@
 package com.lvtinger.demo;
 
-public class TestReflectUtils {
+import org.junit.Test;
 
-    public void scanner(){
+/**
+ * 反射工具测试
+ *
+ * @author qiuxu
+ */
+public class TestReflectUtils {
+    @Test
+    public void scanner() {
+
+    }
+
+    public class TestInfo {
 
     }
 }

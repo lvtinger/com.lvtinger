@@ -20,7 +20,7 @@ public class ConfigManage {
 
         ObjectConfig config = map.get(name);
 
-        if(config == null){
+        if (config == null) {
             throw new LvtingerException();
         }
 
