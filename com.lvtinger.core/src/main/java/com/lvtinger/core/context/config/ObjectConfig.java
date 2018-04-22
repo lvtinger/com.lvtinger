@@ -1,6 +1,6 @@
 package com.lvtinger.core.context.config;
 
-import java.util.List;
+import com.lvtinger.core.common.StringUtils;
 
 /**
  * @author qiuxu
@@ -9,29 +9,26 @@ public class ObjectConfig {
 
     private Class<?> clazz;
     private String name;
-    private List<ValueConfig> properties;
+    private PropertyConfig properties;
 
     public Class<?> getClazz() {
         return clazz;
-    }
-
-    public void setClazz(Class<?> clazz) {
-        this.clazz = clazz;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<ValueConfig> getProperties() {
+    public PropertyConfig getProperties() {
         return properties;
     }
 
-    public void setProperties(List<ValueConfig> properties) {
+    public ObjectConfig(Class<?> clazz, String name, PropertyConfig properties) {
+        if(clazz == null || StringUtils.isEmpty(name)){
+            throw new NullPointerException();
+        }
+        this.clazz = clazz;
+        this.name = name;
         this.properties = properties;
     }
 }

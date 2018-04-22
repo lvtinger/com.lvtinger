@@ -13,7 +13,7 @@ import java.util.Objects;
 public class ConfigManage {
     private final Map<String, ObjectConfig> map = new HashMap<>();
 
-    public ObjectConfig get(String name) {
+    public final ObjectConfig get(String name) {
         if (StringUtils.isEmpty(name)) {
             throw new LvtingerException();
         }
@@ -27,11 +27,15 @@ public class ConfigManage {
         return config;
     }
 
-    public void set(ObjectConfig config) {
+    public final void set(ObjectConfig config) {
         Objects.requireNonNull(config);
         String name = config.getName();
+
         if (map.containsKey(name)) {
-            throw new LvtingerException();
+            ObjectConfig exists = this.get(name);
+            if(!exists.getClazz().equals(config.getClazz())){
+                return;
+            }
         }
 
         map.put(name, config);
