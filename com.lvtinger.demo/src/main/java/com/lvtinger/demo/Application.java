@@ -12,8 +12,8 @@ public class Application {
     public static void main(String... args) {
 
         Set<Class<?>> classes = new LinkedHashSet<>();
-        ReflectUtils.scanType(Application.class.getClassLoader(), classes, "com.lvtinger.core");
-        ReflectUtils.scanType(Application.class.getClassLoader(), classes, "org.junit.runner");
+        ReflectUtils.scanType(classes, "com.lvtinger.core");
+        ReflectUtils.scanType(classes, "org.junit.runner");
 
         for (Class<?> clazz : classes) {
             System.out.println(clazz.getName());

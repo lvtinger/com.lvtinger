@@ -16,24 +16,24 @@ import java.util.jar.JarFile;
  */
 public final class ReflectUtils {
 
-    public static final void scanType(final ClassLoader classLoader, final Set<Class<?>> classes, final String packageName) {
-        if (classLoader == null || classes == null || StringUtils.isEmpty(packageName)) {
+    /**
+     * 扫描类
+     * @param classes 类存储集合
+     * @param packageName 扫描的程序集
+     */
+    public static void scanType(final Set<Class<?>> classes, final String packageName) {
+        if (classes == null || StringUtils.isEmpty(packageName)) {
             return;
         }
 
         try {
-            Enumeration<URL> urls =
-                    packageName.equals("*")
-                            ? classLoader.getResources("")
-                            : classLoader.getResources(packageName.replaceAll("\\.", "/"));
+            Enumeration<URL> urls = Thread.currentThread().getContextClassLoader().getResources(packageName.replaceAll("\\.", "/"));
 
             while (urls.hasMoreElements()) {
                 URL url = urls.nextElement();
                 if (url == null) {
                     continue;
                 }
-
-                System.out.println(url.getPath());
 
                 String protocol = url.getProtocol();
 
@@ -50,32 +50,38 @@ public final class ReflectUtils {
     }
 
     private static void scanJar(final Set<Class<?>> classes, final URL url, final String packageName) {
+        JarFile jarFile = null;
         try {
             JarURLConnection connection = (JarURLConnection) url.openConnection();
             if (connection == null) {
                 return;
             }
-            JarFile jarFile = connection.getJarFile();
-            if (jarFile == null) {
-                return;
-            }
+            jarFile = connection.getJarFile();
 
-            String prefix = packageName.replaceAll("\\.", "/")+"/";
-            Enumeration<JarEntry> jarEntries = jarFile.entries();
-            while (jarEntries.hasMoreElements()) {
-                JarEntry entry = jarEntries.nextElement();
-                String entryName = entry.getName();
-                if (entryName.endsWith(".class") && entryName.startsWith(prefix)) {
-                    String className = entryName.substring(0, entryName.length() - 6);
-                    className = className.replaceAll("/", "\\.");
-                    try {
-                        classes.add(Class.forName(className));
-                    } catch (ClassNotFoundException e) {
-                    }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (jarFile == null) {
+            return;
+        }
+
+        String prefix = packageName.replaceAll("\\.", "/") + "/";
+        Enumeration<JarEntry> jarEntries = jarFile.entries();
+        while (jarEntries.hasMoreElements()) {
+            JarEntry entry = jarEntries.nextElement();
+            String entryName = entry.getName();
+            if (entryName.endsWith(".class") && entryName.startsWith(prefix)) {
+                String className = entryName.substring(0, entryName.length() - 6);
+                className = className.replaceAll("/", "\\.");
+                try {
+                    classes.add(Class.forName(className));
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
                 }
             }
-        } catch (IOException e) {
         }
+
     }
 
     private static void scanFile(final Set<Class<?>> classes, final File file, String packageName) {
@@ -92,7 +98,7 @@ public final class ReflectUtils {
             String fileName = f.getName();
             if (fileName.endsWith(".class")) {
                 String className =
-                        fileName.replaceAll("\\/", "\\.")
+                        fileName.replaceAll("/", "\\.")
                                 .substring(0, fileName.length() - 6);
                 try {
                     classes.add(Class.forName(packageName + className));
