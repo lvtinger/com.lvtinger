@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class TestAnnotationResolver {
     public static void main(String... args){
-        AnnotationResolver resolver = new AnnotationResolver();
+        /*AnnotationResolver resolver = new AnnotationResolver();
         resolver.append("com.lvtinger.cache");
         resolver.append("com.lvtinger.cache.redis");
         resolver.append("com.lvtinger.queue");
@@ -19,6 +19,6 @@ public class TestAnnotationResolver {
 
         for (String p: packages) {
             System.out.println(p);
-        }
+        }*/
     }
 }

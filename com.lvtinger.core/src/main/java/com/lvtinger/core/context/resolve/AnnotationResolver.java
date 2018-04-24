@@ -38,7 +38,6 @@ public class AnnotationResolver extends AbstractResolver {
             return;
         }
 
-
         Set<String> collect = packages.stream()
                 .filter(x -> x.startsWith(packageName+"."))
                 .collect(Collectors.toSet());
@@ -55,7 +54,7 @@ public class AnnotationResolver extends AbstractResolver {
     public void resolve() {
         Set<Class<?>> classes = new LinkedHashSet<>();
         for (String packageName:packages) {
-            ReflectUtils.scanType(classes, packageName);
+            //ReflectUtils.scanType(classes, packageName);
         }
         ConfigManage configManage = this.getConfigManage();
         for (Class<?> clazz: classes) {
