@@ -6,6 +6,8 @@ package com.lvtinger.core.common;
  * @author qiuxu
  */
 public final class StringUtils {
+    public static final String EMPTY = "";
+
     /**
      * 没有查找到字符串时的返回值
      */
@@ -45,5 +47,21 @@ public final class StringUtils {
         }
 
         return text.replaceAll(regex, replacement);
+    }
+
+    public static boolean equal(final String string1, final String string2){
+        if(string1 == null && string1 == null){
+            return true;
+        }
+
+        if(string1 == null || string2 == null){
+            return false;
+        }
+
+        if(string1.length() != string2.length()){
+            return false;
+        }
+
+        return string1.equals(string2);
     }
 }
