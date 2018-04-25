@@ -1,4 +1,4 @@
-package com.lvtinger.core.vessel;
+package com.lvtinger.core.vessel.hope;
 
 public class ReferHope {
     private String name;

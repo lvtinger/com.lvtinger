@@ -1,11 +1,10 @@
 package com.lvtinger.core.vessel;
 
+import com.lvtinger.core.vessel.hope.Hope;
+
 public interface Pandora {
-    <T> void put(Class<T> type);
 
-    <T> void put(Class<T> type, Class<?> impl);
-
-    <T> void put(Class<T> type, Class<?> impl, String name);
+    void put(Hope hope);
 
     <T> T get(Class<T> type);
 
