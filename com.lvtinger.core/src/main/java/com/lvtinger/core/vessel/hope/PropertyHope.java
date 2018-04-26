@@ -1,6 +1,6 @@
 package com.lvtinger.core.vessel.hope;
 
-public class AttrHope {
+public class PropertyHope {
     private String name;
     private Object value;
 

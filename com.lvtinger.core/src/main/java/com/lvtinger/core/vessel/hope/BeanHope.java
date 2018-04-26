@@ -9,10 +9,10 @@ public class BeanHope {
     private String name;
     private Class<?> impl;
     private Constructor<?> constructor;
-    private ReferHope factory;
+    private ReferenceHope factory;
     private Method called;
-    private List<AttrHope> properties;
-    private List<ReferHope> parameters;
+    private List<PropertyHope> properties;
+    private List<ReferenceHope> parameters;
     private Object bean;
 
     public Class<?> getType() {
@@ -47,11 +47,11 @@ public class BeanHope {
         this.constructor = constructor;
     }
 
-    public ReferHope getFactory() {
+    public ReferenceHope getFactory() {
         return factory;
     }
 
-    public void setFactory(ReferHope factory) {
+    public void setFactory(ReferenceHope factory) {
         this.factory = factory;
     }
 
@@ -63,19 +63,19 @@ public class BeanHope {
         this.called = called;
     }
 
-    public List<AttrHope> getProperties() {
+    public List<PropertyHope> getProperties() {
         return properties;
     }
 
-    public void setProperties(List<AttrHope> properties) {
+    public void setProperties(List<PropertyHope> properties) {
         this.properties = properties;
     }
 
-    public List<ReferHope> getParameters() {
+    public List<ReferenceHope> getParameters() {
         return parameters;
     }
 
-    public void setParameters(List<ReferHope> parameters) {
+    public void setParameters(List<ReferenceHope> parameters) {
         this.parameters = parameters;
     }
 
