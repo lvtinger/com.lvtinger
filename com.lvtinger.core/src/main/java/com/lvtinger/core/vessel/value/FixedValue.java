@@ -1,4 +1,4 @@
-package com.lvtinger.core.vessel.hope;
+package com.lvtinger.core.vessel.value;
 
 public class FixedValue extends Value {
 }
