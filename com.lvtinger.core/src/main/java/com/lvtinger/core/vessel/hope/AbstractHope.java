@@ -7,17 +7,17 @@ import java.util.List;
 public abstract class AbstractHope implements Hope {
     private final String name;
     private Object hope;
-    private List<ReferenceHope> properties;
+    private List<Value> properties;
 
     public AbstractHope(String name) {
         this.name = name;
     }
 
-    public List<ReferenceHope> getProperties() {
+    public List<Value> getProperties() {
         return properties;
     }
 
-    public void setProperties(List<ReferenceHope> properties) {
+    public void setProperties(List<Value> properties) {
         this.properties = properties;
     }
 
