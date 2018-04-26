@@ -3,12 +3,7 @@ package com.lvtinger.core.vessel.hope;
 public class ReferHope {
     private String name;
     private Class<?> type;
-    private Object object;
-
-    public ReferHope(String name, Class<?> type) {
-        this.name = name;
-        this.type = type;
-    }
+    private String value;
 
     public String getName() {
         return name;
@@ -26,11 +21,27 @@ public class ReferHope {
         this.type = type;
     }
 
-    public Object getObject() {
-        return object;
+    public String getValue() {
+        return value;
     }
 
-    public void setObject(Object object) {
-        this.object = object;
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public ReferHope() {
+    }
+
+    public ReferHope(Class<?> type) {
+        this.type = type;
+    }
+
+    public ReferHope(String name, Class<?> type) {
+        this.name = name;
+        this.type = type;
+    }
+
+    public ReferHope(String value) {
+        this.value = value;
     }
 }

@@ -1,5 +1,7 @@
 package com.lvtinger.core.context;
 
-public interface ApplicationContext {
+import com.lvtinger.core.vessel.Pandora;
 
+public interface ApplicationContext {
+    Pandora getPandora();
 }
