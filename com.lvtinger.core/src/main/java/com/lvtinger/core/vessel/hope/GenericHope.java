@@ -3,17 +3,16 @@ package com.lvtinger.core.vessel.hope;
 import com.lvtinger.core.common.ArrayUtils;
 import com.lvtinger.core.lang.LvtingerException;
 import com.lvtinger.core.vessel.Pandora;
-import com.lvtinger.core.vessel.value.Value;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 public class GenericHope extends AbstractHope {
     private Constructor<?> constructor;
-    private Value[] parameters;
+    private Object[] parameters;
 
-    public GenericHope(String name, Constructor<?> constructor, Value... parameters) {
-        super(name);
+    public GenericHope(String name, Class<?> type, Constructor<?> constructor, Object... parameters) {
+        super(name, type);
         this.constructor = constructor;
         this.parameters = parameters;
     }

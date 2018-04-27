@@ -1,10 +1,8 @@
 package com.lvtinger.core.vessel.hope;
 
-import com.lvtinger.core.vessel.value.Value;
-
 public class PropertyValue {
     private String name;
-    private Value value;
+    private Object value;
 
     public String getName() {
         return name;
@@ -14,11 +12,11 @@ public class PropertyValue {
         this.name = name;
     }
 
-    public Value getValue() {
+    public Object getValue() {
         return value;
     }
 
-    public void setValue(Value value) {
+    public void setValue(Object value) {
         this.value = value;
     }
 }

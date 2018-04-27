@@ -1,24 +1,24 @@
 package com.lvtinger.core.vessel.hope;
 
 import com.lvtinger.core.vessel.Pandora;
-import com.lvtinger.core.vessel.value.Value;
-
 import java.util.List;
 
 public abstract class AbstractHope implements Hope {
     private final String name;
     private Object hope;
-    private List<Value> properties;
+    private List<PropertyValue> properties;
+    private Class<?> type;
 
-    public AbstractHope(String name) {
+    public AbstractHope(String name, Class<?> type) {
         this.name = name;
+        this.type = type;
     }
 
-    public List<Value> getProperties() {
+    public List<PropertyValue> getProperties() {
         return properties;
     }
 
-    public void setProperties(List<Value> properties) {
+    public void setProperties(List<PropertyValue> properties) {
         this.properties = properties;
     }
 
@@ -33,7 +33,7 @@ public abstract class AbstractHope implements Hope {
     }
 
     @Override
-    public Object getHope(Pandora pandora) {
+    public final Object getHope(Pandora pandora) {
         Object object = this.instance(pandora);
         this.hope = object;
         return object;
