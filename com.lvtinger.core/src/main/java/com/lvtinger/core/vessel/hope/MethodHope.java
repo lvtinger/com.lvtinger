@@ -35,8 +35,8 @@ public class MethodHope extends AbstractHope {
             values = new Object[length];
             for (int i = 0; i < length; i++){
                 Object value = this.parameters[i];
-                if(value instanceof ReferValue){
-                    String referName = ((ReferValue) value).getReferName();
+                if(value instanceof ReferencedValue){
+                    String referName = ((ReferencedValue) value).getName();
                     value = pandora.get(referName);
                 }
                 values[i] = value;

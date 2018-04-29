@@ -43,8 +43,8 @@ public abstract class AbstractHope implements Hope {
         if(CollectionUtils.isNotEmpty(this.properties)){
             for (PropertyValue propertyValue : this.properties) {
                 Object value = propertyValue.getValue();
-                if(value instanceof ReferValue){
-                    value = pandora.get(((ReferValue) value).getReferName());
+                if(value instanceof ReferencedValue){
+                    value = pandora.get(((ReferencedValue) value).getName());
                 }
 
                 try {

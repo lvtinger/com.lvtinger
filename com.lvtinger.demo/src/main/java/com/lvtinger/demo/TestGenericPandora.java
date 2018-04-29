@@ -5,7 +5,7 @@ import com.lvtinger.core.vessel.Pandora;
 import com.lvtinger.core.vessel.hope.GenericHope;
 import com.lvtinger.core.vessel.hope.Hope;
 import com.lvtinger.core.vessel.hope.PropertyValue;
-import com.lvtinger.core.vessel.hope.ReferValue;
+import com.lvtinger.core.vessel.hope.ReferencedValue;
 import com.lvtinger.demo.api.UserAPI;
 import com.lvtinger.demo.dao.UserDAO;
 import com.lvtinger.demo.dao.impl.UserDaoImpl;
@@ -26,8 +26,8 @@ public class TestGenericPandora {
         pandora.put(dao);
 
         //dao引用
-        ReferValue referValue = new ReferValue();
-        referValue.setReferName(UserDAO.class.getTypeName());
+        ReferencedValue referValue = new ReferencedValue();
+        referValue.setName(UserDAO.class.getTypeName());
 
         //property定义
         PropertyValue propertyValue = new PropertyValue();
