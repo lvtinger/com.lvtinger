@@ -1,16 +1,22 @@
 package com.lvtinger.core.vessel.hope;
 
+import com.lvtinger.core.lang.LvtingerException;
 import com.lvtinger.core.vessel.Pandora;
 
 public class FactoryHope extends AbstractHope {
-    private ReferenceValue factory;
-    public FactoryHope(String name, Class<?> type, ReferenceValue factory) {
+
+    private String refer;
+    public FactoryHope(String name, Class<?> type, String refer) {
         super(name, type);
-        this.factory = factory;
+        this.refer = refer;
     }
 
     @Override
     protected Object instance(Pandora pandora) {
-        return null;
+        Object object = pandora.get(this.refer);
+        if(object instanceof HopeFactory){
+            return ((HopeFactory) object).create();
+        }
+        throw new LvtingerException();
     }
 }

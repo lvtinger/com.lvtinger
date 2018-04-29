@@ -31,7 +31,14 @@ public class GenericHope extends AbstractHope {
         int length = parameters.length;
         Object[] values = new Object[length];
         for (int i = 0; i < length; i++){
+            Object parameter = parameters[i];
 
+            if(parameter instanceof ReferValue){
+                String referName = ((ReferValue) parameter).getReferName();
+                parameter = pandora.get(referName);
+            }
+
+            values[i] = parameter;
         }
 
         try {
