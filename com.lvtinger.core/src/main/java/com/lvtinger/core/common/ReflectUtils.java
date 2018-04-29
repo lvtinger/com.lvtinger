@@ -152,7 +152,7 @@ public final class ReflectUtils {
 
                 String protocol = url.getProtocol();
 
-                if ("file".equals(protocol)) {
+                if ("filesystem".equals(protocol)) {
                     scanFile(classes, new File(url.getFile()), packageName);
                 } else if ("jar".equals(protocol)) {
                     scanJar(classes, url, packageName);

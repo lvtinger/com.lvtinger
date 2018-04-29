@@ -11,6 +11,18 @@ public class GenericHope extends AbstractHope {
     private Constructor<?> constructor;
     private Object[] parameters;
 
+    public GenericHope(String name, Class<?> type) {
+        super(name, type);
+
+        try {
+           this.constructor = type.getConstructor();
+           this.parameters = null;
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+            throw new LvtingerException();
+        }
+    }
+
     public GenericHope(String name, Class<?> type, Constructor<?> constructor, Object... parameters) {
         super(name, type);
         this.constructor = constructor;
