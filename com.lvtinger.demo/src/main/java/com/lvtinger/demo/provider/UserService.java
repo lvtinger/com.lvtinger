@@ -7,6 +7,13 @@ import com.lvtinger.demo.domain.User;
 public class UserService implements UserAPI {
     private UserDAO userDAO;
 
+    public UserService() {
+    }
+
+    public UserService(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
+
     @Override
     public User getById(Long userId) {
         return userDAO.getById(userId);
